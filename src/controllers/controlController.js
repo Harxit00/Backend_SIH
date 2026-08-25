@@ -41,7 +41,8 @@ exports.createControl = async (req, res, next) => {
 
     const control = new Control(value);
     await control.save();
-    await control.populate('asset').populate('vulnerability');
+    await control.populate('asset');
+    await control.populate('vulnerability');
 
     res.status(201).json({
       success: true,
