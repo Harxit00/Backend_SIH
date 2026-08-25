@@ -12,11 +12,11 @@ function App() {
 
   useEffect(() => {
     // Check if backend is running
-    fetch('http://localhost:5000/health')
+    fetch('http://localhost:5001/health')
       .then(res => res.json())
       .then(() => setLoading(false))
       .catch(() => {
-        alert('❌ Backend is not running! Please start the server on port 5000')
+        alert('❌ Backend is not running! Please start the server on port 5001')
         setLoading(false)
       })
   }, [])

@@ -22,9 +22,9 @@ const RiskCalculator = () => {
   const fetchData = async () => {
     try {
       setLoading(true)
-      const assetRes = await axios.get('http://localhost:5000/api/assets')
-      const vulnRes = await axios.get('http://localhost:5000/api/vulnerabilities')
-      const ctrlRes = await axios.get('http://localhost:5000/api/controls')
+      const assetRes = await axios.get('http://localhost:5001/api/assets')
+      const vulnRes = await axios.get('http://localhost:5001/api/vulnerabilities')
+      const ctrlRes = await axios.get('http://localhost:5001/api/controls')
       setAssets(assetRes.data.data)
       setVulnerabilities(vulnRes.data.data)
       setControls(ctrlRes.data.data)
@@ -49,7 +49,7 @@ const RiskCalculator = () => {
 
     try {
       setCalculating(true)
-      const response = await axios.post('http://localhost:5000/api/risks/calculate', formData)
+      const response = await axios.post('http://localhost:5001/api/risks/calculate', formData)
       setResult(response.data.data)
       setMessage({ type: 'success', text: '✅ Risk calculated successfully!' })
     } catch (err) {

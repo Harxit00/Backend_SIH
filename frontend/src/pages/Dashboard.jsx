@@ -14,7 +14,7 @@ const Dashboard = () => {
   const fetchDashboard = async () => {
     try {
       setLoading(true)
-      const response = await axios.get('http://localhost:5000/api/risks/dashboard')
+      const response = await axios.get('http://localhost:5001/api/risks/dashboard')
       if (response.data.success) {
         setDashboardData(response.data.data)
       }

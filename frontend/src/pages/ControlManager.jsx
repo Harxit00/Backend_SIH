@@ -29,9 +29,9 @@ const ControlManager = () => {
   const fetchData = async () => {
     try {
       setLoading(true)
-      const ctrlRes = await axios.get('http://localhost:5000/api/controls')
-      const assetRes = await axios.get('http://localhost:5000/api/assets')
-      const vulnRes = await axios.get('http://localhost:5000/api/vulnerabilities')
+      const ctrlRes = await axios.get('http://localhost:5001/api/controls')
+      const assetRes = await axios.get('http://localhost:5001/api/assets')
+      const vulnRes = await axios.get('http://localhost:5001/api/vulnerabilities')
       setControls(ctrlRes.data.data)
       setAssets(assetRes.data.data)
       setVulnerabilities(vulnRes.data.data)
@@ -53,7 +53,7 @@ const ControlManager = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await axios.post('http://localhost:5000/api/controls', formData)
+      await axios.post('http://localhost:5001/api/controls', formData)
       setMessage({ type: 'success', text: '✅ Control created!' })
       setFormData({
         name: '',
@@ -78,7 +78,7 @@ const ControlManager = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/controls/${id}`)
+        await axios.delete(`http://localhost:5001/api/controls/${id}`)
         setMessage({ type: 'success', text: '✅ Control deleted!' })
         fetchData()
       } catch (err) {

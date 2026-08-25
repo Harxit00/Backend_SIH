@@ -24,7 +24,7 @@ const AssetManager = () => {
   const fetchAssets = async () => {
     try {
       setLoading(true)
-      const response = await axios.get('http://localhost:5000/api/assets')
+      const response = await axios.get('http://localhost:5001/api/assets')
       setAssets(response.data.data)
     } catch (err) {
       setMessage({ type: 'error', text: 'Failed to fetch assets' })
@@ -41,7 +41,7 @@ const AssetManager = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await axios.post('http://localhost:5000/api/assets', formData)
+      await axios.post('http://localhost:5001/api/assets', formData)
       setMessage({ type: 'success', text: '✅ Asset created successfully!' })
       setFormData({
         name: '',
@@ -63,7 +63,7 @@ const AssetManager = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this asset?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/assets/${id}`)
+        await axios.delete(`http://localhost:5001/api/assets/${id}`)
         setMessage({ type: 'success', text: '✅ Asset deleted successfully!' })
         fetchAssets()
       } catch (err) {
